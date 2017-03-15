@@ -1,0 +1,114 @@
+<div class="main" ng-controller="DetailController">
+    <div class="container" id="contentContainer">
+
+    <!-- Back Button and Header -->
+        <br>
+        <div class="row">
+            <div class"col-3">
+                
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <a href="#!view2"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"> Back</span></a>
+                </button>
+            </div>
+            <div class="col">
+                <h1>
+                    {{ senator.results[0].first_name }} {{ senator.results[0].last_name }}
+                    <small class="text-muted">({{ senator.results[0].roles[0].party }}-{{ senator.results[0].roles[0].state }})</small>
+                </h1>
+            </div>
+        </div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="!#biography" role="tab">Biography</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="!#votes" role="tab" ng-click="getVotes()">Votes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="!#bills" role="tab" ng-click="getBills()">Bills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="!#contact" role="tab">Contact</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="biography" role="tabpanel">
+                <br>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <img src="{{senatorPhoto}}">
+                        <h5> Party Affliation: {{ senator.results[0].roles[0].party }} </h5>
+                        <h5> Gender: {{ senator.results[0].gender }} </h5>
+                        <h5> Date of Birth: {{ senator.results[0].date_of_birth | date }} </h5>
+                    </div>
+                    <div class="col col-md-6">
+                        <h4> Committee Assignments: </h4>
+                        <div ng-repeat="committee in senator.results[0].roles[0].committees">
+                            <p>{{ committee.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="votes" role="tabpanel">
+                <br>
+                <div class="row">
+                     <div class="col col-md-10">
+                        <h4>Recent votes:</h4>
+                         <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Vote Description</th>
+                                    <th>Position Taken</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="vote in votes.results[0].votes |  limitTo: 6">
+                                    <td> {{ vote.description }} </td>
+                                    <td> {{ vote.position }} </td>
+                                    <td> {{ vote.date | date }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                    <div class="col col-md-2">
+                        <h5> Votes with party: {{ senator.results[0].roles[0].votes_with_party_pct}}% <h5>
+                        <h5> Percentage of votes missed: {{senator.results[0].roles[0].missed_votes_pct}}%</h5>
+                    </div>
+        
+                </div>
+            </div>
+            <div class="tab-pane" id="bills" role="tabpanel">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Bill Number</th>
+                            <th>Title</th>
+                            <th>Date Introduced</th>
+                            <th>Latest Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="bill in bills.results[0].bills | limitTo: 1">
+                            <td>{{bill.number}}</th>
+                            <td>{{bill.title}}</th>
+                            <td>{{bill.introduced_date | date}}</th>
+                            <td>{{bill.latest_major_action}}</th>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div class="tab-pane" id="contact" role="tabpanel">
+                <br>
+                <h4>Official Website:<a href="{{senator.results[0].url}}" Link</a></h4>
+                <h4>Official Phone: {{ senator.results[0].roles[0].phone}}</h4>
+                <h4>Twitter: @{{senator.results[0].twitter_account}}</h4>
+            </div>
+        </div>
+
+    </div>
+</div>

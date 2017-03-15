@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="senatorApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="senatorApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="senatorApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="senatorApp" class="no-js"> <!--<![endif]-->
+<head>
+
+<!-- Header information -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>What's My Senator Doing?</title>
+  <meta name="What's My Senator Doing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Stylesheets -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> 
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bootswatch_theme.min.css"> 
+
+<!--Javascript for Angular, HTML5 -->
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!-- Content container -->
+<div class="container">
+  <div ng-view>
+  </div>
+</div>
+
+
+      
+<!-- Modules -->
+  <script src="app.js"></script>
+
+<!-- Controllers -->
+  <script src="controllers/mainController.js"></script>
+
+<!-- Services -->
+  <script src="services/myService.js"></script>
+
+<!-- Views -->
+  <script src="searchView/searchView.js"></script>
+  <script src="view2/view2.js"></script>
+
+<!-- Helper function -->
+  <script src="stateabbr.js"></script>
+
+  
+  
+</body>
+</html>
